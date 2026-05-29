@@ -26,14 +26,14 @@
               @csrf
               @method("PATCH")
               <button type="submit"
-                class="shrink px-3 py-2 rounded-full font-semibold bg-body-cyan text-bg-dark-primary">Verify</button>
+                class="shrink px-3 py-2 rounded-full font-semibold bg-body-cyan text-bg-dark-primary">{{ $user->verified ? 'verified' : 'unverified' }}</button>
             </form>
 
             <form action="/Admin/Users/MakeAdmin/{{ $user->id }}" method="POST">
               @csrf
               @method("PATCH")
               <button type="shrink submit"
-                class="px-3 py-2 rounded-full font-semibold bg-primary-bright text-bg-dark-primary">Make Admin</button>
+                class="px-3 py-2 rounded-full font-semibold bg-primary-bright text-bg-dark-primary">{{ $user->is_admin ? 'discard as admin' : 'make admin' }}</button>
             </form>
           </div>
         </div>
