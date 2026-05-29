@@ -10,7 +10,7 @@
         <p class="text-sm text-body-cyan">Customers: {{ $customers->count() }}</p>
       </div>
 
-      <div class="grid grid-cols-5 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-5 gap-6">
         @if ($customers->count() != 0)
           @foreach($customers as $customer)
             <div

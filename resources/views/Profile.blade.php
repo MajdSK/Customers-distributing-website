@@ -16,7 +16,7 @@
             class="text-body-cyan">{{ $user->is_admin ? 'Yes' : 'No' }}</span></div>
       </div>
 
-      <form action="/logout" method="POST">
+      <form action="/Logout" method="POST">
         @csrf
         <button type="submit"
           class="w-full px-4 py-2 rounded-full font-semibold bg-accent-rose text-white">Logout</button>
@@ -70,7 +70,7 @@
       </div>
 
 
-      <form action="/logout" method="POST">
+      <form action="/Logout" method="POST">
         @csrf
         <button type="submit"
           class="w-full px-4 py-2 rounded-full font-semibold bg-accent-rose text-white">Logout</button>

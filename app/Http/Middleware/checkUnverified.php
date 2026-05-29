@@ -23,7 +23,7 @@ class checkUnverified
         $user = Auth::user();
 
         if ($user->verified) {
-            abort(404);
+            return redirect('/');
         }
 
         return $next($request);

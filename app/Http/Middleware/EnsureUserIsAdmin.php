@@ -23,7 +23,7 @@ class EnsureUserIsAdmin
         $user = Auth::user();
 
         if (!$user->is_admin) {
-            abort(404);
+            return redirect('/');
         }
 
         return $next($request);
