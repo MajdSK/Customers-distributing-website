@@ -15,7 +15,7 @@
     --color-primary-bright-40: #cefafe6a;      /* Brightest cyan for primary headings */
     --color-body-cyan: #63efff;           /* Body text in cyan */
     --color-body-cyan-40: #63efff70;           /* Body text in cyan */
-    --color-secondary-text: #64748b;      /* Muted blue-gray for secondary text */
+    --color-secondary-text: #010101;      /* Muted blue-gray for secondary text */
     
     /* Accent colors for contrast and alerts */
     --color-accent-amber: #f59e0b;        /* Amber for high-contrast CTAs */
@@ -24,6 +24,43 @@
     /* Background colors */
     --color-bg-dark-primary: #020617;     /* Dark mode primary background */
     --color-bg-dark-nav: #08121d;         /* Dark mode nav background */
+    --color-dark-nav: #1d5960;         /* Dark mode nav background */
     --color-bg-card: #05173b;             /* Card/glassmorphism background */
+}
+
+.auth-page {
+    min-height: 100vh;
+    background: var(--color-bg-dark-primary);
+    color: var(--color-secondary-text);
+}
+
+.auth-card {
+    background: rgba(5, 23, 59, 0.88);
+    border: 1px solid rgba(99, 239, 255, 0.18);
+    box-shadow: 0 22px 80px rgba(99, 239, 255, 0.12);
+    backdrop-filter: blur(26px);
+}
+
+.auth-input {
+    background: rgba(8, 18, 29, 0.85);
+    border: 1px solid rgba(99, 239, 255, 0.18);
+    color: var(--color-primary-bright);
+}
+
+.auth-input::placeholder {
+    color: rgba(100, 116, 139, 0.72);
+}
+
+.auth-button {
+    background: var(--color-body-cyan);
+    color: #020617;
+}
+
+.auth-link {
+    color: var(--color-body-cyan);
+}
+
+.auth-link:hover {
+    color: var(--color-primary-bright);
 }
 

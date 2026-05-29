@@ -12,16 +12,19 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function openSignUpPage(){
-        return view("SignUp");
+    public function openSignUpPage()
+    {
+        return view("Auth/SignUp");
     }
-    public function openLogInPage(){
-        return view("LogIn");
+    public function openLogInPage()
+    {
+        return view("Auth/LogIn");
     }
-    public function signUpNewUser(Request $request){
+    public function signUpNewUser(Request $request)
+    {
         $request->validate([
             'name' => ['required', 'min:3', 'max:255'],
-            'email' => ['required', 'string', 'max:255', 'email', 'unique:Users,email'],
+            'email' => ['required', 'string', 'max:255', 'email', 'unique:users,email'],
             'password' => ['required', Password::default()],
         ]);
         $user = User::create([
@@ -30,19 +33,29 @@ class AuthController extends Controller
             'password' => Hash::make(request("password")),
             "email_verified_at" => now(),
             "created_at" => now(),
-            "updated_at" => now()
+            "updated_at" => now(),
+            "remember_token" => "",
         ]);
         Auth::login($user);
         return redirect("/");
     }
-    public function logInUser(Request $request){
-        if(Auth::attempt($request->validate([
-            'email' => ['required','email', 'unique:Users,email'],
+    public function logInUser(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
             'password' => ['required'],
-        ])) && User::where('email', request("email"))->exists()){
+        ]);
+
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect('/');
         }
-        return back()->withErrors(['email' => "invalid credentials", 'password' => "invalid password"]);
+
+        return back()->withErrors(['email' => "The provided credentials do not match our records."])->onlyInput('email');
+    }
+    public function logoutUser()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }

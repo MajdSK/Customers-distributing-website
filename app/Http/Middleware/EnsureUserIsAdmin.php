@@ -23,9 +23,9 @@ class EnsureUserIsAdmin
         $user = Auth::user();
 
         if (!$user->is_admin) {
-            abort(403, 'Unauthorized action. Admin access required.');
+            abort(404);
         }
-        
+
         return $next($request);
     }
 }

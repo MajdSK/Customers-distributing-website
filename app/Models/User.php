@@ -15,7 +15,7 @@ use App\Models\Customer;
 
 
 
-#[Fillable(['name', 'email', 'password', 'availability', 'is_admin', "verified"])]
+#[Fillable(['name', 'email', 'password', 'availability', 'is_admin', "verified", "email_verified_at"])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {

@@ -4,57 +4,73 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class UsersController extends Controller
 {
-    public function vUserHome(User $user)
+    public function unVerUserHome()
     {
-        return view("User", ["user" => $user, "customers"=> $user->customers]);
+        $user = User::where("id", Auth::user()->id)->first();
+        return view("Unverified_users/Index", ["user" => $user]);
     }
-    public function makeAvailable( User $user)
+    public function vUserHome()
     {
-        $user->update(['availability'=>!$user->availability]);
+        $user = User::where("id", Auth::user()->id)->first();
+        return view("Verified_users/Index", ["user" => $user, "customers" => $user->customers]);
+    }
+    public function makeAvailable(User $user)
+    {
+        $user->update(['availability' => !$user->availability]);
         return redirect()->back();
     }
-    public function doneTasksUser(User $user){
-        return view("Verified_user/Done", ["doneTasks" => $user->customers()->where('visited', true)->get()]);
+    public function doneTasksUser()
+    {
+        $user = User::where("id", Auth::user()->id)->first();
+        return view("Verified_users/Done", ["customers" => $user->customers()->where('visited', true)->get()]);
     }
-    public function pendingTasksUser(User $user){
-        return view("Verified_user/Pending", ["pendingTasks" => $user->customers()->where('visited', false)->get()]);
+    public function pendingTasksUser()
+    {
+        $user = User::where("id", Auth::user()->id)->first();
+        return view("Verified_users/Pending", ["customers" => $user->customers()->where('visited', false)->get()]);
     }
-    public function showProfUser(User $user){
-        return view('Verified_user/Profile', ['user' => $user]);
+    public function showProfUser()
+    {
+        $user = User::where("id", Auth::user()->id)->first();
+        return view('/Profile', ['user' => $user]);
     }
 
-    private function getAllUsers()
+
+    public function adminHome()
     {
-        return User::all();
+        return view("Admins/Index", ["users" => User::all(), "customers" => Customer::all()]);
     }
     public function adminUsersPage()
     {
-        return view("Admins/users", ["users" => $this->getAllUsers()]);
+        return view("Admins/Users", ["users" => User::all()]);
+    }
+    public function doneTasksAdmin()
+    {
+        return view("Admins/Done", ["customers" => Customer::where('visited', true)->get()]);
+    }
+    public function pendingTasksAdmin()
+    {
+        return view("Admins/Pending", ["customers" => Customer::where('visited', false)->get()]);
     }
 
     public function makeAdmin(User $user)
     {
-        $user->update(['is_admin'=>!$user->is_admin]);
+        $user->update(['is_admin' => !$user->is_admin]);
         return redirect()->back();
     }
     public function verify(User $user)
     {
-        $user->update(['verified'=>!$user->verified]);
+        $user->update(['verified' => !$user->verified]);
         return redirect()->back();
     }
-    public function destroyUser()
+    public function destroyUser(User $user)
     {
-        User::where("id", request("delUserId"))->first()->delete();
+        $user->delete();
         return redirect()->back();
-    }
-    public function doneTasksAdmin(){
-        return view("Verified_user/Done", ["doneTasks" => Customer::where('visited', true)->get()]);
-    }
-    public function pendingTasksAdmin(){
-        return view("Verified_user/Pending", ["pendingTasks" => Customer::where('visited', false)->get()]);
     }
 }
