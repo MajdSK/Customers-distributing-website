@@ -26,6 +26,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::patch('/Admin/Users/Verify/{user}', [UsersController::class, 'verify']);
     Route::delete('/Admin/Users/Destroy/{user}', [UsersController::class, 'destroyUser']);
     Route::patch('/Customer/MarkVisited/{customer}', [CustomerController::class, 'MakeVisited']);
+    Route::post("/addNewCustomer", [CustomerController::class, "addNewCustomer"]);
+    Route::delete('/Customer/Drop/{customer}', [CustomerController::class, "DelCustomer"]);
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -33,6 +35,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/VUser/pending-tasks', [UsersController::class, 'pendingTasksUser'])->name('user_pending_tasks.show');
     Route::get('/VUser/done-tasks', [UsersController::class, 'doneTasksUser'])->name('user_done_tasks.show');
     Route::patch('/VUser/makeAvailable/{user}', [UsersController::class, 'makeAvailable']);
+    Route::patch('/MakeAvailable/{user}', [UsersController::class, "makeAvailable"]);
+    Route::patch('/Customer/MarkVisited/{customer}', [CustomerController::class, 'MakeVisited']);
+    Route::delete('/Customer/Drop/{customer}', [CustomerController::class, "DelCustomer"]);
 });
 
 Route::middleware('guest')->group(function () {

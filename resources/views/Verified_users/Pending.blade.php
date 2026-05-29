@@ -1,4 +1,3 @@
-
 <x-verifiedLayout>
 	<div class="p-6">
 		<h1 class="text-4xl font-bold mb-6 text-primary-bright">Pending Customers</h1>
@@ -18,12 +17,16 @@
 						<div class="flex items-center gap-3">
 							<form action="/Customer/MarkVisited/{{ $customer->id }}" method="POST" class="w-full sm:w-auto">
 								@csrf
-								<button type="submit" class="w-full sm:w-auto px-4 py-2 rounded-full font-semibold bg-body-cyan text-bg-dark-primary">Mark visited</button>
+								<button type="submit"
+									class="w-full sm:w-auto px-4 py-2 rounded-full font-semibold bg-body-cyan text-bg-dark-primary">Mark
+									visited</button>
 							</form>
 
 							<form action="/Customer/Drop/{{ $customer->id }}" method="POST" class="w-full sm:w-auto">
 								@csrf
-								<button type="submit" class="w-full sm:w-auto px-4 py-2 rounded-full font-semibold bg-accent-rose text-white">Remove</button>
+								@method("DELETE")
+								<button type="submit"
+									class="w-full sm:w-auto px-4 py-2 rounded-full font-semibold bg-accent-rose text-white">Remove</button>
 							</form>
 						</div>
 					</div>
@@ -33,4 +36,4 @@
 			@endforelse
 		</div>
 	</div>
-  </x-verifiedLayout>
+</x-verifiedLayout>

@@ -14,7 +14,7 @@
       <div class="mb-8">
         <p class="text-body-cyan uppercase tracking-[0.35em] font-semibold text-sm">Create account</p>
         <h1 class="mt-4 text-4xl font-bold text-primary-bright">Sign up for access</h1>
-        <p class="mt-2 text-secondary-text max-w-xl">Create your account to manage your customers and tasks in one
+        <p class="mt-2 text-body-cyan-40 max-w-xl">Create your account to manage your customers and tasks in one
           place.</p>
       </div>
 
@@ -30,28 +30,28 @@
 
       <form action="/SignUp" method="POST" class="space-y-5">
         @csrf
-        <label class="block text-sm font-medium text-secondary-text">
+        <label class="block text-sm font-medium text-body-cyan-40">
           <span class="mb-2 inline-block">Full name</span>
           <input type="text" name="name" value="{{ old('name') }}" required
-            class="auth-input w-full rounded-3xl px-4 py-3 text-base placeholder:text-secondary-text focus:border-body-cyan focus:ring-2 focus:ring-body-cyan/20 focus:outline-none"
+            class="auth-input w-full rounded-3xl px-4 py-3 text-base placeholder:text-body-cyan-40 focus:border-body-cyan focus:ring-2 focus:ring-body-cyan/20 focus:outline-none"
             placeholder="Your full name">
         </label>
 
-        <label class="block text-sm font-medium text-secondary-text">
+        <label class="block text-sm font-medium text-body-cyan-40">
           <span class="mb-2 inline-block">Email address</span>
           <input type="email" name="email" value="{{ old('email') }}" required
-            class="auth-input w-full rounded-3xl px-4 py-3 text-base placeholder:text-secondary-text focus:border-body-cyan focus:ring-2 focus:ring-body-cyan/20 focus:outline-none"
+            class="auth-input w-full rounded-3xl px-4 py-3 text-base placeholder:text-body-cyan-40 focus:border-body-cyan focus:ring-2 focus:ring-body-cyan/20 focus:outline-none"
             placeholder="you@example.com">
         </label>
 
-        <label class="block text-sm font-medium text-secondary-text">
+        <label class="block text-sm font-medium text-body-cyan-40">
           <span class="mb-2 inline-block">Password</span>
           <input type="password" name="password" required
-            class="auth-input w-full rounded-3xl px-4 py-3 text-base placeholder:text-secondary-text focus:border-body-cyan focus:ring-2 focus:ring-body-cyan/20 focus:outline-none"
+            class="auth-input w-full rounded-3xl px-4 py-3 text-base placeholder:text-body-cyan-40 focus:border-body-cyan focus:ring-2 focus:ring-body-cyan/20 focus:outline-none"
             placeholder="Choose a strong password">
         </label>
 
-        <div class="flex items-center justify-between text-sm text-secondary-text">
+        <div class="flex items-center justify-between text-sm text-body-cyan-40">
           <p>Already have an account?</p>
           <a href="/LogIn" class="auth-link font-semibold hover:text-primary-bright transition">Log in</a>
         </div>
