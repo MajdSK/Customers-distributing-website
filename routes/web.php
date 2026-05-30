@@ -21,13 +21,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/Admin/all-pending-tasks', [UsersController::class, 'pendingTasksAdmin'])->name('all_pending_tasks.show');
     Route::get('/Admin/all-done-tasks', [UsersController::class, 'doneTasksAdmin'])->name('all_done_tasks.show');
     Route::get('/AdminUser', [UsersController::class, 'adminHome'])->name('admin_homepage.show');
+    Route::get('/Admin/User/{user}/todaysTasks', [UsersController::class, 'ShowUsersDoneTasksDaily']);
+    Route::get('/Admin/User/{user}/AllTimeTasks', [UsersController::class, 'ShowUsersDoneTasksAllTime']);
 
     Route::patch('/Admin/Users/MakeAdmin/{user}', [UsersController::class, 'makeAdmin']);
     Route::patch('/Admin/Users/Verify/{user}', [UsersController::class, 'verify']);
     Route::delete('/Admin/Users/Destroy/{user}', [UsersController::class, 'destroyUser']);
-    Route::patch('/Customer/MarkVisited/{customer}', [CustomerController::class, 'MakeVisited']);
-    Route::post("/addNewCustomer", [CustomerController::class, "addNewCustomer"]);
+    Route::patch('/Admin/Customer/MarkVisited/{customer}', [CustomerController::class, 'MakeVisited']);
+    Route::post("/addNewCustomer", [CustomerController::class, "importExcelToCustomerController"]);
     Route::delete('/Customer/Drop/{customer}', [CustomerController::class, "DelCustomer"]);
+
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

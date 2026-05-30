@@ -1,6 +1,6 @@
 <x-adminLayout>
   <div class="p-6">
-    <h1 class="text-4xl font-bold mb-6 text-primary-bright">All Completed Customers</h1>
+    <h1 class="text-4xl font-bold mb-6 text-primary-bright">{{ $user->name }}'s completed tasks since day 1:</h1>
 
     <div class="grid grid-cols-1 gap-4">
       @forelse($customers->where('visited', true) as $customer)

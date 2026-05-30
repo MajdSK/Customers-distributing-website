@@ -4,7 +4,7 @@
 
     <div class="grid grid-cols-1 gap-4">
       @forelse($customers as $customer)
-        <div class="p-4 rounded-lg border bg-bg-card border-body-cyan-40 text-body-cyan">
+        <div class="p-4 rounded-2xl border bg-bg-card border-body-cyan-40 text-body-cyan">
           <p class="text-xl font-semibold text-primary-bright">{{ $customer->name }}</p>
           <p class="text-sm mt-1 text-secondary-text">ID: {{ $customer->id }}</p>
           <p class="text-sm mt-1 text-secondary-text">Address: {{ $customer->address }}</p>

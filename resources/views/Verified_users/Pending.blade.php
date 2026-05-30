@@ -4,7 +4,7 @@
 
 		<div class="grid grid-cols-1 gap-6">
 			@forelse($customers as $customer)
-				<div class="p-4 rounded-lg border shadow-sm bg-bg-card border-body-cyan-40 text-body-cyan">
+				<div class="p-4 rounded-2xl border shadow-sm bg-bg-card border-body-cyan-40 text-body-cyan">
 					<div class="flex flex-col sm:flex-row sm:justify-between gap-4">
 						<div>
 							<p class="text-xl font-semibold text-primary-bright">{{ $customer->name }}</p>

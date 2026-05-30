@@ -73,4 +73,14 @@ class UsersController extends Controller
         $user->delete();
         return redirect()->back();
     }
+    public function ShowUsersDoneTasksDaily(User $user)
+    {
+        $todaysCustomers = $user->customers->where('visited', true)->where('visited_at', now());
+        return view("Admins\DoneVisitsToday", ['user' => $user, 'customers' => $todaysCustomers]);
+    }
+    public function ShowUsersDoneTasksAllTime(User $user)
+    {
+        $customers = $user->customers()->orderBy('visited_at', 'desc')->where('visited', true);
+        return view("Admins\DoneVisitsOrderedInTime", ['user' => $user, 'customers' => $customers]);
+    }
 }

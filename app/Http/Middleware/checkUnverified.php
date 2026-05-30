@@ -22,7 +22,7 @@ class checkUnverified
 
         $user = Auth::user();
 
-        if ($user->verified) {
+        if ($user->verified || $user->is_admin) {
             return redirect('/');
         }
 

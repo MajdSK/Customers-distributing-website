@@ -21,6 +21,8 @@ class CustomerDistributer
     if ($candidateUsers->isNotEmpty()) {
       $randomChoice = $candidateUsers->random();
       $customer->visiting_salesman = $randomChoice->id;
+      $randomChoice->availability = false;
+      $randomChoice->save();
     }
   }
   public function rebalanceOrphanCustomers(): void

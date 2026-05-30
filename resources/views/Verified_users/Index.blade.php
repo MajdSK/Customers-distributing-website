@@ -5,7 +5,7 @@
       @foreach ($customers as $customer)
         <div
           onclick="document.getElementById('customer_{{ $customer->id }}').classList.add('flex'); document.getElementById('customer_{{ $customer->id }}').classList.remove('hidden')"
-          class="border border-body-cyan bg-bg-card/50 backdrop-blur text-body-cyan hover:shadow-glow-nav hover:text-primary-bright cursor-pointer transition p-2 rounded text-center text-sm">
+          class="border border-body-cyan bg-bg-card/50 backdrop-blur text-body-cyan hover:shadow-glow-nav hover:text-primary-bright cursor-pointer transition p-2 rounded-2xl text-center text-sm">
           {{ $customer->name }}
           @if (Auth()->user()->is_admin === true)
             <form action="/DelCustomer/{{ $customer->id }}" method="POST">
@@ -15,7 +15,7 @@
           @endif
         </div>
         <div id="customer_{{ $customer->id }}"
-          class="text-primary-bright p-6 hidden w-[40vw] h-[70vh] border absolute top-1/5 left-1/2 -translate-x-1/2 border-body-cyan bg-bg-card rounded-lg backdrop-blur flex-col gap-2 justify-start items-start">
+          class="text-primary-bright p-6 hidden w-[40vw] h-[70vh] border absolute top-1/5 left-1/2 -translate-x-1/2 border-body-cyan bg-bg-card rounded-2xl backdrop-blur flex-col gap-2 justify-start items-start">
           <p>customer ID: {{ $customer->id }}</p>
           <p>customer name: {{ $customer->name }}</p>
           <p>customer address: {{ $customer->address }}</p>

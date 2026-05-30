@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['name','address','visited','visiting_salesman'])]
+#[Fillable(['name', 'address', 'visited', 'visiting_salesman'])]
 class Customer extends Model
 {
     /** @use HasFactory<\Database\Factories\CustomerFactory> */
@@ -21,6 +21,7 @@ class Customer extends Model
             'address' => 'string',
             'visited' => 'boolean',
             'visiting_salesman' => 'integer',
+            'visited_at' => 'date:d-m-Y',
         ];
     }
 
