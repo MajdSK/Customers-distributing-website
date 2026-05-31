@@ -22,7 +22,7 @@
             </p>
           </div>
 
-          <div class="grid grid-cols-2 grid-rows-2 sm:flex sm:flex-row gap-3 ml-4 justify-between items-center">
+          <div class="flex sm:flex-row flex-col gap-3 ml-4 justify-between items-center">
             <form action="/Admin/Users/Destroy/{{ $user->id }}" method="POST">
               @csrf
               @method("DELETE")

@@ -21,7 +21,7 @@ class UsersController extends Controller
     }
     public function makeAvailable(User $user)
     {
-        $user->update(['availability' => !$user->availability]);
+        $user->update(['availability' => ($user->availability ? false : true)]);
         return redirect()->back();
     }
     public function doneTasksUser()

@@ -40,7 +40,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/VUser/makeAvailable/{user}', [UsersController::class, 'makeAvailable']);
     Route::patch('/MakeAvailable/{user}', [UsersController::class, "makeAvailable"]);
     Route::patch('/Customer/MarkVisited/{customer}', [CustomerController::class, 'MakeVisited']);
-    Route::delete('/Customer/Drop/{customer}', [CustomerController::class, "DelCustomer"]);
+    Route::delete('/Customer/Drop/{customer}', [CustomerController::class, "DropCustomer"]);
 });
 
 Route::middleware('guest')->group(function () {

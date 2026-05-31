@@ -11,6 +11,7 @@ class CustomerController extends Controller
     public function MakeVisited(Customer $customer)
     {
         $customer->update(["visited" => 1, "visited_at" => now()]);
+        $customer->salesman->update(['availability' => true]);
         return redirect()->back();
     }
     public function addNewCustomer(Request $request)
@@ -61,6 +62,11 @@ class CustomerController extends Controller
         $reader->close();
 
         return redirect('/');
+    }
+    public function DropCustomer(Customer $customer)
+    {
+        $customer->update(['visiting_salesman' => null]);
+        return redirect()->back();
     }
     public function DelCustomer(Customer $customer)
     {

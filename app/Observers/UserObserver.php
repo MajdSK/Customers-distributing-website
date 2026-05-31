@@ -27,7 +27,7 @@ class UserObserver
         $becameUnverified = $user->wasChanged('verified') && $user->verified == 0;
 
         if ($becameAdmin || $becameUnavailable || $becameUnverified) {
-            Customer::where('visiting_salesman', $user->id)->update([
+            Customer::where('visited', false)->where('visiting_salesman', $user->id)->update([
                 'visiting_salesman' => null
             ]);
 

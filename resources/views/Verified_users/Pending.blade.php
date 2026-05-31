@@ -8,15 +8,16 @@
 					<div class="flex flex-col sm:flex-row sm:justify-between gap-4">
 						<div>
 							<p class="text-xl font-semibold text-primary-bright">{{ $customer->name }}</p>
-							<p class="text-sm text-secondary-text">ID: {{ $customer->id }}</p>
-							<p class="text-sm mt-1 text-secondary-text">Address: {{ $customer->address }}</p>
-							<p class="text-sm mt-1 text-secondary-text">Visited: {{ $customer->visited ? 'Yes' : 'No' }}</p>
-							<p class="text-sm mt-1 text-secondary-text">Salesman: {{ $customer->salesman?->name ?? 'unassigned' }}</p>
+							<p class="text-sm text-body-cyan-40">ID: {{ $customer->id }}</p>
+							<p class="text-sm mt-1 text-body-cyan-40">Address: {{ $customer->address }}</p>
+							<p class="text-sm mt-1 text-body-cyan-40">Visited: {{ $customer->visited ? 'Yes' : 'No' }}</p>
+							<p class="text-sm mt-1 text-body-cyan-40">Salesman: {{ $customer->salesman?->name ?? 'unassigned' }}</p>
 						</div>
 
 						<div class="flex items-center gap-3">
 							<form action="/Customer/MarkVisited/{{ $customer->id }}" method="POST" class="w-full sm:w-auto">
 								@csrf
+								@method('PATCH')
 								<button type="submit"
 									class="w-full sm:w-auto px-4 py-2 rounded-full font-semibold bg-body-cyan text-bg-dark-primary">Mark
 									visited</button>
@@ -32,7 +33,7 @@
 					</div>
 				</div>
 			@empty
-				<p class="text-secondary-text">No pending customers.</p>
+				<p class="text-body-cyan-40">No pending customers.</p>
 			@endforelse
 		</div>
 	</div>
