@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->boolean('visited')->default(false);
             $table->foreignId('visiting_salesman')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
-            $table->date("visited_at");
+            $table->date("visited_at")->nullable()->default(null);
         });
     }
 

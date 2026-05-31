@@ -44,8 +44,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware('guest')->group(function () {
-    Route::get('/LogIn', [AuthController::class, 'openLogInPage']);
-    Route::get('/SignUp', [AuthController::class, 'openSignUpPage']);
+    Route::get('/LogIn', [AuthController::class, 'openLogInPage'])->name('LogIn');
+    Route::get('/SignUp', [AuthController::class, 'openSignUpPage'])->name('LogIn');
     Route::post('/SignUp', [AuthController::class, 'signUpNewUser']);
     Route::post('/LogIn', [AuthController::class, 'logInUser']);
     Route::get('/welcome', function () {

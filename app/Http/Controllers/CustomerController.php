@@ -19,9 +19,10 @@ class CustomerController extends Controller
         Customer::create([
             'name' => $request->input('name'),
             'address' => $request->input('address'),
-            // 'phone_number' => $request->input('phone_number'),
+            'phone_number' => $request->input('phone_number'),
             'visited' => false,
-            'visiting_salesman' => null
+            'visiting_salesman' => null,
+            'visited_at' => null
         ]);
     }
     public function importExcelToCustomerController(Request $request)
@@ -45,6 +46,7 @@ class CustomerController extends Controller
                 }
                 $name = isset($cells[0]) ? trim($cells[0]) : null;
                 $address = isset($cells[1]) ? trim($cells[1]) : null;
+                $phone_number = isset($cells[2]) ? trim($cells[2]) : null;
 
                 if (empty($name) && empty($address)) {
                     continue;
@@ -53,6 +55,7 @@ class CustomerController extends Controller
                 $mappedData = [
                     'name' => $name,
                     'address' => $address,
+                    'phone_number' => $phone_number
                 ];
                 $customerRequest = new Request($mappedData);
                 $this->addNewCustomer($customerRequest);

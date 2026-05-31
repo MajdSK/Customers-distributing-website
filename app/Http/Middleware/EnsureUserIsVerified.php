@@ -12,7 +12,7 @@ class EnsureUserIsVerified
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            return redirect()->route('LogIn')->with('error', 'Please log in first.');
+            return redirect('/');
         }
 
         $user = Auth::user();
